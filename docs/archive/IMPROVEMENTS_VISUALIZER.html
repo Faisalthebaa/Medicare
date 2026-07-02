@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare 2026: Architectural Improvements</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        .header { background: #1a508b; color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .pillar-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; border-left: 5px solid #1a508b; }
+        h2 { color: #1a508b; margin-top: 0; }
+        .logic-box { background: #e9f0f7; padding: 15px; border-radius: 5px; font-style: italic; margin: 10px 0; border-left: 3px solid #2d82b7; }
+        .benefit-tag { display: inline-block; background: #28a745; color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85em; margin-top: 10px; }
+        .code-concept { font-family: 'Courier New', Courier, monospace; background: #fdf6e3; padding: 2px 5px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🏥 MediCare 2026: Senior Architect Insights</h1>
+    <p>Strategic Improvements for an Errorless Industry-Level Data Warehouse</p>
+</div>
+
+<div class="pillar-card">
+    <h2>1. Clinical Sanity (The Medical Guardrail)</h2>
+    <p><strong>The Problem:</strong> Data can be "technically" correct (a number) but "medically" impossible (a sensor error).</p>
+    <div class="logic-box">
+        <strong>Logic:</strong> We implemented Hard Bounds (e.g., Blood Oxygen > 100%) and Soft Bounds (e.g., Temp > 105°F).
+    </div>
+    <p><strong>Implementation:</strong> The <code>clinical_sanity_check()</code> function in Python flags these before they hit the AI model.</p>
+    <span class="benefit-tag">Benefit: Prevents AI from learning "hallucinated" medical patterns.</span>
+</div>
+
+<div class="pillar-card">
+    <h2>2. Data Lineage (The Audit Trail)</h2>
+    <p><strong>The Problem:</strong> In a year, we won't remember which CSV file a specific row of data came from.</p>
+    <div class="logic-box">
+        <strong>Logic:</strong> Every row is "fingerprinted" with <code>source_file</code> and <code>load_timestamp</code> metadata.
+    </div>
+    <p><strong>Implementation:</strong> The <code>ETLPipeline</code> class automatically injects these columns during ingestion.</p>
+    <span class="benefit-tag">Benefit: Total accountability. You can prove the "Source of Truth" to the CFO.</span>
+</div>
+
+<div class="pillar-card">
+    <h2>3. The Semantic Layer (Single Source of Truth)</h2>
+    <p><strong>The Problem:</strong> Different people calculating "Risk" or "Balance" using different formulas.</p>
+    <div class="logic-box">
+        <strong>Logic:</strong> We decoupled storage from reporting. Tables store raw data; SQL Views store the "Official Formula."
+    </div>
+    <p><strong>Implementation:</strong> We created the 0-90 day and 90+ day "Aged AR" buckets directly in the database logic.</p>
+    <span class="benefit-tag">Benefit: Everyone (Python, Tableau, SQL) sees the exact same numbers.</span>
+</div>
+
+<div class="pillar-card">
+    <h2>4. Timing & Snapshot Integrity (Active vs. Discharged)</h2>
+    <p><strong>The Problem:</strong> AI sees an outstanding balance for an active patient and incorrectly flags it as a "financial risk."</p>
+    <div class="logic-box">
+        <strong>Logic:</strong> We separated debt by state. Active patients have "Interim Balance," not "Overdue Debt."
+    </div>
+    <p><strong>Implementation:</strong> Our logic uses <code>Outcome</code> and <code>Patient_Status</code> to provide context to the balance.</p>
+    <span class="benefit-tag">Benefit: Drastically reduces "False Positives" in financial risk predictions.</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare MAP: The 2026 Data Revolution</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00d2ff;
+            --cyber-purple: #6a11cb;
+            --electric-green: #00ff87;
+            --sunset-orange: #ff512f;
+            --deep-space: #0f172a;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+        body { font-family: 'Outfit', sans-serif; background: #0b0f19; color: #e2e8f0; margin: 0; padding: 0; line-height: 1.6; }
+        
+        .hero { 
+            background: linear-gradient(135deg, #000428 0%, #004e92 100%); 
+            padding: 120px 20px; 
+            text-align: center; 
+            border-bottom: 4px solid var(--neon-blue);
+        }
+        .hero h1 { 
+            font-size: 4.5em; 
+            margin: 0; 
+            font-weight: 800; 
+            background: linear-gradient(to right, #fff, var(--neon-blue)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+        .hero p { font-size: 1.2em; color: var(--neon-blue); font-weight: 400; margin-top: 10px; letter-spacing: 3px; text-transform: uppercase; }
+
+        .container { max-width: 1100px; margin: -60px auto 60px; padding: 20px; }
+        
+        .section { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 50px; margin-bottom: 60px; }
+        h2 { font-size: 2.5em; color: white; border-left: 10px solid var(--neon-blue); padding-left: 25px; margin-bottom: 40px; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        
+        .analytics-desc { background: rgba(15, 23, 42, 0.5); padding: 35px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+        .analytics-desc h3 { color: var(--neon-blue); font-size: 1.6em; margin-top: 0; }
+        
+        .file-box { background: #000; border: 1px solid var(--electric-green); color: var(--electric-green); padding: 20px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; margin: 20px 0; }
+        .file-label { color: #64748b; font-size: 0.75em; display: block; margin-bottom: 10px; text-transform: uppercase; border-bottom: 1px solid #1e293b; padding-bottom: 5px; }
+
+        .chart-wrapper { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); height: 350px; position: relative; }
+
+        .insight-box { background: linear-gradient(to right, rgba(0,210,255,0.05), rgba(106,17,203,0.05)); border-right: 4px solid var(--neon-blue); padding: 25px; border-radius: 12px; margin-top: 20px; font-size: 0.95em; }
+        .insight-box b { color: var(--neon-blue); display: block; margin-bottom: 5px; }
+
+        footer { text-align: center; padding: 80px 20px; background: #000; color: #64748b; border-top: 2px solid #1e293b; }
+        footer strong { color: var(--neon-blue); }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <p>Strategic Initiative | 2026 Executive Roadmap</p>
+        <h1>MediCare MAP</h1>
+        <p>Chief Data Strategist: Danish Raza</p>
+    </div>
+
+    <div class="container">
+
+        <!-- THE VISION -->
+        <div class="section" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+            <h2>The Strategic Goal</h2>
+            <div class="grid">
+                <div class="analytics-desc">
+                    <h3>Stopping Information Blindness</h3>
+                    <p>In 2026, healthcare data is a mess of disconnected files. Our mission is to unify these files into a single <strong>Command Center</strong>. We aim to:</p>
+                    <ul>
+                        <li><b>Identify Leakage:</b> Find where the $1.2M is being lost.</li>
+                        <li><b>Predict Risk:</b> Stop patients from getting sick after discharge.</li>
+                    </ul>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="visionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 1: THE VAULT (SQL) -->
+        <section class="section">
+            <h2 style="border-color: var(--electric-green);">Phase 1: The Vault <span>SQL Engineering</span></h2>
+            <div class="grid">
+                <div class="analytics-desc">
+                    <h3>Architecting for Speed & Integrity</h3>
+                    <p>Why do we use SQL instead of Excel or raw CSV files?</p>
+                    <ul>
+                        <li style="margin-bottom: 10px;"><b>Lightning Speed:</b> SQL queries run up to 75x faster on large datasets compared to legacy spreadsheets.</li>
+                        <li style="margin-bottom: 10px;"><b>Data Integrity:</b> We use <strong>Primary & Foreign Keys</strong> to ensure no medical record is ever duplicated or lost.</li>
+                        <li><b>Automation:</b> Materialized views run complex calculations in the background automatically.</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>Phase 1 is about building the "Brain" of the project. We design a <strong>PostgreSQL 16</strong> Data Warehouse to act as the single source of truth.</p>
+                    <div class="file-box">
+                        <span class="file-label">SQL ARCHITECTURE:</span>
+                        > CREATE SCHEMA production_medicare;<br>
+                        > CREATE TABLE fact_admissions (PK_id, FK_patient...);<br>
+                        > CREATE INDEX idx_readmit ON admissions(readmitted_30d);
+                    </div>
+                    <div class="insight-box">
+                        <b>The Data Analyst Advantage:</b>
+                        We use <strong>3rd Normal Form (3NF)</strong> to eliminate data redundancy, making our analytics platform robust and instantly scalable.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 2: THE VIBE CHECK (PYTHON) -->
+        <section class="section">
+            <h2 style="border-color: var(--python-gold);">Phase 2: The Vibe Check <span>Python EDA</span></h2>
+            <div class="grid">
+                <div>
+                    <p>Data is never clean. We use <strong>Python & Pandas</strong> to perform a surgical "Vibe Check"—cleaning 30,000 rows of errors before analysis.</p>
+                    <div class="file-box" style="border-color: var(--python-gold); color: var(--python-gold);">
+                        <span class="file-label">ANALYTICS PIPELINE:</span>
+                        [1] df = pd.read_sql('SELECT * FROM admissions')<br>
+                        [2] df.fillna({'outstanding_balance': 0}, inplace=True)<br>
+                        [3] df['is_elderly'] = df['age'] > 65
+                    </div>
+                    <div class="insight-box" style="border-right-color: var(--python-gold);">
+                        <b>The Data Analyst Advantage:</b>
+                        We use <strong>Vectorized Operations</strong> to clean data in seconds. We find the "Red Flags"—like billing dates that happen before a patient was even admitted.
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="pythonChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 3: THE ORACLE (ML) -->
+        <section class="section">
+            <h2 style="border-color: var(--cyber-purple);">Phase 3: The Oracle <span>Predictive AI</span></h2>
+            <div class="grid">
+                <div class="chart-wrapper">
+                    <canvas id="mlImportanceChart"></canvas>
+                </div>
+                <div>
+                    <p>We move beyond "What Happened" to "What is Next." We build a <strong>Random Forest</strong> model to identify which patients are high-risk.</p>
+                    <div class="file-box" style="border-color: var(--cyber-purple); color: var(--cyber-purple);">
+                        <span class="file-label">AI ARTIFACTS:</span>
+                        • ALGO: Random Forest Classifier<br>
+                        • TARGET: readmitted_30d (Yes/No)<br>
+                        • MODEL FILE: risk_score_v1.pkl<br>
+                        • DATA TYPE: Compressed Feature Matrix
+                    </div>
+                    <div class="insight-box" style="border-right-color: var(--cyber-purple);">
+                        <b>The Data Analyst Advantage:</b>
+                        The chart on the left shows our <strong>Feature Importance</strong>. It proves that a patient's "Comorbidity Score" is the #1 predictor of whether they will return to the hospital.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 4: COMMAND CENTER (TABLEAU) -->
+        <section class="section">
+            <h2 style="border-color: var(--sunset-orange);">Phase 4: Command Center <span>Tableau BI</span></h2>
+            <div class="grid">
+                <div>
+                    <p>The final delivery. We use <strong>Tableau</strong> to build an interactive world for the hospital executives.</p>
+                    <div class="insight-box" style="border-right-color: var(--sunset-orange);">
+                        <b>The Data Analyst Advantage:</b>
+                        We connect Tableau <strong>LIVE</strong> to our SQL Vault. With "Drill-Down" actions, a manager can click a city and see exactly which doctor has the highest success rate.
+                    </div>
+                    <div class="file-box" style="border-color: var(--sunset-orange); color: var(--sunset-orange);">
+                        <span class="file-label">DELIVERABLES:</span>
+                        • Executive_Command_Center.twbx<br>
+                        • Revenue_Leakage_Live.twb<br>
+                        • Clinical_Insights.twb
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="tableauChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Confidential Strategy | 2026 Data Revolution</p>
+        <p>Chief Data Strategist: <strong>Danish Raza</strong></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Vision Chart: Fixed Pie Chart
+            new Chart(document.getElementById('visionChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Insurance Denials', 'Billing Errors', 'Unpaid Balances'],
+                    datasets: [{
+                        data: [45, 35, 20],
+                        backgroundColor: ['#6a11cb', '#00d2ff', '#ff512f'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { position: 'bottom', labels: { color: '#e2e8f0' } },
+                        title: { display: true, text: 'Current $1.2M Revenue Loss Drivers', color: '#fff' }
+                    }
+                }
+            });
+
+            // Phase 2 Chart: Data Cleaning Impact
+            new Chart(document.getElementById('pythonChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Raw Data', 'Cleaned Data'],
+                    datasets: [{
+                        label: 'Data Integrity Score (%)',
+                        data: [45, 96],
+                        backgroundColor: ['#64748b', '#00d2ff'],
+                        borderRadius: 10
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+
+            // Phase 3 Chart: Feature Importance (MOST ANALYTICAL CHART)
+            new Chart(document.getElementById('mlImportanceChart'), {
+                type: 'bar',
+                indexAxis: 'y',
+                data: {
+                    labels: ['Comorbidity', 'Age', 'Stay Length', 'Dept Type', 'Wait Time'],
+                    datasets: [{
+                        label: 'Impact on Readmission Risk (%)',
+                        data: [42, 28, 15, 10, 5],
+                        backgroundColor: '#6a11cb',
+                        borderRadius: 8
+                    }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { title: { display: true, text: 'The Oracle: AI Decision Factors', color: '#fff' } }
+                }
+            });
+
+            // Phase 4 Chart: Decision Speed
+            new Chart(document.getElementById('tableauChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [{
+                        label: 'Decision Speed Index',
+                        data: [10, 40, 85, 100],
+                        borderColor: '#00ff87',
+                        fill: true,
+                        backgroundColor: 'rgba(0, 255, 135, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        });
+    </script>
+</body>
+</html>
